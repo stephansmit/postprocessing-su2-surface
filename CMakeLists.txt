@@ -7,10 +7,10 @@ find_package(VTK COMPONENTS
   vtkCommonCore
   vtkIOLegacy
   vtkIOXML
-  vtkInteractionStyle
-  vtkRenderingCore
-  vtkRenderingFreeType
-  vtkRenderingOpenGL2 QUIET)
+  vtkInteractionStyle)
+#  vtkRenderingCore
+#  vtkRenderingFreeType
+#  vtkRenderingOpenGL QUIET)
 if (NOT VTK_FOUND)
   message("Skipping SimplePointsReader: ${VTK_NOT_FOUND_MESSAGE}")
   return ()
@@ -30,6 +30,7 @@ if (VTK_VERSION VERSION_LESS "8.90.0")
   message("Including this shit: ${SRCFILES}")
   include_directories(${MESHGEN_SRC})
   include_directories(${SRC_DIR})
+  include_directories(${SISL_DIR})
   add_executable(PPSU2Surface MACOSX_BUNDLE PPSU2Surface.cxx 
 	  "${MESHGEN_SRC}/point.h"
 	  "${MESHGEN_SRC}/point.cpp"
@@ -42,6 +43,7 @@ if (VTK_VERSION VERSION_LESS "8.90.0")
 	  "${SRC_DIR}/vtkpoint.h"
 	  )
   target_link_libraries(PPSU2Surface PRIVATE ${VTK_LIBRARIES})
+  target_link_libraries(PPSU2Surface PRIVATE ${SISL_LIB})
 
 
 

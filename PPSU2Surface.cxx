@@ -10,11 +10,11 @@
 #include <vtkUnstructuredGrid.h>
 
 
-#include <vtkActor.h>
-#include <vtkProperty.h>
-#include <vtkRenderer.h>
-#include <vtkRenderWindow.h>
-#include <vtkRenderWindowInteractor.h>
+//#include <vtkActor.h>
+//#include <vtkProperty.h>
+//include <vtkRenderer.h>
+//#include <vtkRenderWindow.h>
+//#include <vtkRenderWindowInteractor.h>
 
 
 #include <lines.h>
