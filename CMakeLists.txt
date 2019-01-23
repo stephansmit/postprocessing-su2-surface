@@ -37,6 +37,8 @@ if (VTK_VERSION VERSION_LESS "8.90.0")
 	  "${MESHGEN_SRC}/lines.cpp"
 	  "${MESHGEN_SRC}/functions.h"
 	  "${MESHGEN_SRC}/functions.cpp"
+	  "${MESHGEN_SRC}/Param.h"
+	  "${MESHGEN_SRC}/Param.cpp"
 	  "${SRC_DIR}/vtkpoint.h"
 	  )
   target_link_libraries(SimplePointsReader PRIVATE ${VTK_LIBRARIES})
