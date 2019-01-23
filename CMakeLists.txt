@@ -1,7 +1,7 @@
 
 cmake_minimum_required(VERSION 3.3 FATAL_ERROR)
 
-project(SimplePointsReader)
+project(PPSU2Surface)
 
 find_package(VTK COMPONENTS 
   vtkCommonCore
@@ -30,7 +30,7 @@ if (VTK_VERSION VERSION_LESS "8.90.0")
   message("Including this shit: ${SRCFILES}")
   include_directories(${MESHGEN_SRC})
   include_directories(${SRC_DIR})
-  add_executable(SimplePointsReader MACOSX_BUNDLE SimplePointsReader.cxx 
+  add_executable(PPSU2Surface MACOSX_BUNDLE PPSU2Surface.cxx 
 	  "${MESHGEN_SRC}/point.h"
 	  "${MESHGEN_SRC}/point.cpp"
 	  "${MESHGEN_SRC}/lines.h"
@@ -41,7 +41,7 @@ if (VTK_VERSION VERSION_LESS "8.90.0")
 	  "${MESHGEN_SRC}/Param.cpp"
 	  "${SRC_DIR}/vtkpoint.h"
 	  )
-  target_link_libraries(SimplePointsReader PRIVATE ${VTK_LIBRARIES})
+  target_link_libraries(PPSU2Surface PRIVATE ${VTK_LIBRARIES})
 
 
 
@@ -50,12 +50,12 @@ if (VTK_VERSION VERSION_LESS "8.90.0")
  
 else ()
   # include all components
-  add_executable(SimplePointsReader MACOSX_BUNDLE SimplePointsReader.cxx )
-  target_link_libraries(SimplePointsReader PRIVATE ${VTK_LIBRARIES})
+  add_executable(PPSU2Surface MACOSX_BUNDLE PPSU2Surface.cxx )
+  target_link_libraries(PPSU2Surface PRIVATE ${VTK_LIBRARIES})
 
   # vtk_module_autoinit is needed
   vtk_module_autoinit(
-    TARGETS SimplePointsReader
+    TARGETS PPSU2Surface
     MODULES ${VTK_LIBRARIES}
     )
 endif () 
