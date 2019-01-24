@@ -75,7 +75,7 @@ public:
 		}
 		spl = SPLINE(tmp);
 		for (int i=0; i<spl.controlPt.size(); i++){
-			controlPt[i].s = 1.0-spl.controlPt[i].s;
+			controlPt[i].s = spl.controlPt[i].s;
 		}
 	}
 	void writeCtrPts(const char *name);
