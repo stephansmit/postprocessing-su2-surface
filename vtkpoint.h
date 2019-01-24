@@ -69,7 +69,7 @@ public:
 	deque<VTKPOINT> controlPt;
 public:
 	VTKSPLINE(deque<VTKPOINT> &ctrPts): controlPt(ctrPts) {
-		deque<POINT> tmp;
+		deque<POINT> tmp, test;
 		for (int i=0; i<ctrPts.size(); i++){
 			tmp.push_back((POINT) ctrPts[i]);
 		}
@@ -132,7 +132,7 @@ void initialize_ordering(deque<VTKPOINT>& ordered_pts, deque<VTKPOINT>& unordere
 		tmp.z=0;
 		tmp.x*=1000;
 		tmp.y*=1000;
-		if (mag(tmp - lead_point)<1e-4){
+		if (mag(tmp - lead_point)<1e-2){
 			ordered_pts.push_back(unordered_pts[i]);
 			index = i;
 		}

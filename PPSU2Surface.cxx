@@ -83,9 +83,11 @@ void output_results(string VTKFile, string OutPutFile){
 	  i++;
 	  tmpdeq2.push_back(deq[i]);
 	  i++;
-	  tmpdeq3.push_back(deq[i]);
+	  tmpdeq3.push_back(deq[i]);//	order_deq11 = set_deque_correct(order_deq1);
+	  //	order_deq21 = set_deque_correct(order_deq2);
+	  //	order_deq31 = set_deque_correct(order_deq3);
 	}
-
+//
 	//read leading point
 	POINT leadPt = readPt("leadpoint.txt");
 
@@ -97,6 +99,7 @@ void output_results(string VTKFile, string OutPutFile){
 
 
 
+//
 	initialize_ordering(init_order_deq1, tmpdeq1, leadPt);
 	initialize_ordering(init_order_deq2, tmpdeq2, leadPt);
 	initialize_ordering(init_order_deq3, tmpdeq3, leadPt);
@@ -106,15 +109,15 @@ void output_results(string VTKFile, string OutPutFile){
 	order_deq2 =order_by_distance(init_order_deq2, tmpdeq2);
 	order_deq3 =order_by_distance(init_order_deq3, tmpdeq3);
 
-	order_deq11 = set_deque_correct(order_deq1);
-	order_deq21 = set_deque_correct(order_deq2);
-	order_deq31 = set_deque_correct(order_deq3);
+//	order_deq11 = set_deque_correct(order_deq1);
+//	order_deq21 = set_deque_correct(order_deq2);
+//	order_deq31 = set_deque_correct(order_deq3);
 
 
 	//create splines
-	VTKSPLINE test1 = VTKSPLINE(order_deq11);
-	VTKSPLINE test2 = VTKSPLINE(order_deq21);
-	VTKSPLINE test3 = VTKSPLINE(order_deq31);
+	VTKSPLINE test1 = VTKSPLINE(order_deq1);
+	VTKSPLINE test2 = VTKSPLINE(order_deq2);
+	VTKSPLINE test3 = VTKSPLINE(order_deq3);
 
 	//write the points
 	string file1 = OutPutFile+"_1.txt";
