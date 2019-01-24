@@ -91,9 +91,9 @@ void output_results(string VTKFile, string OutPutFile){
 
 
 	//order the points
-	deque<VTKPOINT> order_deq1, init_order_deq1;
-	deque<VTKPOINT> order_deq2, init_order_deq2;
-	deque<VTKPOINT> order_deq3, init_order_deq3;
+	deque<VTKPOINT> order_deq1, order_deq11, init_order_deq1;
+	deque<VTKPOINT> order_deq2, order_deq21, init_order_deq2;
+	deque<VTKPOINT> order_deq3, order_deq31, init_order_deq3;
 
 
 
@@ -106,11 +106,15 @@ void output_results(string VTKFile, string OutPutFile){
 	order_deq2 =order_by_distance(init_order_deq2, tmpdeq2);
 	order_deq3 =order_by_distance(init_order_deq3, tmpdeq3);
 
+	order_deq11 = set_deque_correct(order_deq1);
+	order_deq21 = set_deque_correct(order_deq2);
+	order_deq31 = set_deque_correct(order_deq3);
+
 
 	//create splines
-	VTKSPLINE test1 = VTKSPLINE(order_deq1);
-	VTKSPLINE test2 = VTKSPLINE(order_deq2);
-	VTKSPLINE test3 = VTKSPLINE(order_deq3);
+	VTKSPLINE test1 = VTKSPLINE(order_deq11);
+	VTKSPLINE test2 = VTKSPLINE(order_deq21);
+	VTKSPLINE test3 = VTKSPLINE(order_deq31);
 
 	//write the points
 	string file1 = OutPutFile+"_1.txt";

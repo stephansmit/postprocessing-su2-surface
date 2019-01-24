@@ -81,6 +81,13 @@ public:
 	void writeCtrPts(const char *name);
 };
 
+
+deque<VTKPOINT> set_deque_correct(deque<VTKPOINT> tmp){
+	if (tmp[0].x < tmp[tmp.size()-1].x){
+		reverse(tmp.begin(),tmp.end());
+	}
+	return tmp;
+}
 void VTKSPLINE::writeCtrPts(const char *name)
 {
 	FILE *fp = fopen(name, "wt");
