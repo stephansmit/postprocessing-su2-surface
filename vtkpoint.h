@@ -146,7 +146,9 @@ deque<VTKPOINT> order_by_distance(deque<VTKPOINT> ordered_pts, deque<VTKPOINT> u
 		VTKPOINT tmp;
 		int index;
 		for (int i=0; i<unordered_pts.size();i++){
-			double distance = mag(ordered_pts[ordered_pts.size()-1]-unordered_pts[i]);
+			tmp = unordered_pts[i];
+			tmp.z = 0;
+			double distance = mag(ordered_pts[ordered_pts.size()-1]-tmp);
 			if (distance < mindistance){
 				mindistance = distance;
 				index = i;
