@@ -14,8 +14,8 @@ if ("stephans" in os.environ['HOME']):
 else:
    cmds = [
     "mkdir -p build",
-    "cd build && cmake -DVTK_DIR:PATH=/home/azureuser/Documents/VTK/build -DMESHGEN_SRC:PATH=/home/azureuser/Documents/Blade-MeshGen/src -DSRC_DIR=/home/azureuser/Documents/postprocessing-su2-surface ..",
-    "cd build && make -j8"
+    "(cd build && cmake -DVTK_DIR:PATH=/home/azureuser/Documents/VTK/build -DMESHGEN_SRC:PATH=/home/azureuser/Documents/Blade-MeshGen/src -DSRC_DIR=/home/azureuser/Documents/postprocessing-su2-surface ..)",
+    "(cd build && make -j8)"
    ]
 
 os.system("\n".join(cmds))
