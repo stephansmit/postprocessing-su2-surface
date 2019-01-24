@@ -83,20 +83,23 @@ void output_results(string VTKFile, string OutPutFile){
 	  i++;
 	  tmpdeq2.push_back(deq[i]);
 	  i++;
-	  tmpdeq3.push_back(deq[i]);
+	  tmpdeq3.push_back(deq[i]);//	order_deq11 = set_deque_correct(order_deq1);
+	  //	order_deq21 = set_deque_correct(order_deq2);
+	  //	order_deq31 = set_deque_correct(order_deq3);
 	}
-
+//
 	//read leading point
 	POINT leadPt = readPt("leadpoint.txt");
 
 
 	//order the points
-	deque<VTKPOINT> order_deq1, init_order_deq1;
-	deque<VTKPOINT> order_deq2, init_order_deq2;
-	deque<VTKPOINT> order_deq3, init_order_deq3;
+	deque<VTKPOINT> order_deq1, order_deq11, init_order_deq1;
+	deque<VTKPOINT> order_deq2, order_deq21, init_order_deq2;
+	deque<VTKPOINT> order_deq3, order_deq31, init_order_deq3;
 
 
 
+//
 	initialize_ordering(init_order_deq1, tmpdeq1, leadPt);
 	initialize_ordering(init_order_deq2, tmpdeq2, leadPt);
 	initialize_ordering(init_order_deq3, tmpdeq3, leadPt);
@@ -105,6 +108,10 @@ void output_results(string VTKFile, string OutPutFile){
 	order_deq1 =order_by_distance(init_order_deq1, tmpdeq1);
 	order_deq2 =order_by_distance(init_order_deq2, tmpdeq2);
 	order_deq3 =order_by_distance(init_order_deq3, tmpdeq3);
+
+//	order_deq11 = set_deque_correct(order_deq1);
+//	order_deq21 = set_deque_correct(order_deq2);
+//	order_deq31 = set_deque_correct(order_deq3);
 
 
 	//create splines

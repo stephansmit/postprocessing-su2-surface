@@ -69,7 +69,7 @@ public:
 	deque<VTKPOINT> controlPt;
 public:
 	VTKSPLINE(deque<VTKPOINT> &ctrPts): controlPt(ctrPts) {
-		deque<POINT> tmp;
+		deque<POINT> tmp, test;
 		for (int i=0; i<ctrPts.size(); i++){
 			tmp.push_back((POINT) ctrPts[i]);
 		}
@@ -81,6 +81,13 @@ public:
 	void writeCtrPts(const char *name);
 };
 
+
+deque<VTKPOINT> set_deque_correct(deque<VTKPOINT> tmp){
+	if (tmp[0].x < tmp[tmp.size()-1].x){
+		reverse(tmp.begin(),tmp.end());
+	}
+	return tmp;
+}
 void VTKSPLINE::writeCtrPts(const char *name)
 {
 	FILE *fp = fopen(name, "wt");
@@ -125,7 +132,7 @@ void initialize_ordering(deque<VTKPOINT>& ordered_pts, deque<VTKPOINT>& unordere
 		tmp.z=0;
 		tmp.x*=1000;
 		tmp.y*=1000;
-		if (mag(tmp - lead_point)<1e-4){
+		if (mag(tmp - lead_point)<1e-1){
 			ordered_pts.push_back(unordered_pts[i]);
 			index = i;
 		}
@@ -146,7 +153,9 @@ deque<VTKPOINT> order_by_distance(deque<VTKPOINT> ordered_pts, deque<VTKPOINT> u
 		VTKPOINT tmp;
 		int index;
 		for (int i=0; i<unordered_pts.size();i++){
-			double distance = mag(ordered_pts[ordered_pts.size()-1]-unordered_pts[i]);
+			tmp = unordered_pts[i];
+			tmp.z = 0;
+			double distance = mag(ordered_pts[ordered_pts.size()-1]-tmp);
 			if (distance < mindistance){
 				mindistance = distance;
 				index = i;
